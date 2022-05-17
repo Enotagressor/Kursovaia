@@ -9,9 +9,9 @@ public class Main {
     }
 
     public static void printEmployee(Employee[] storage) {
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] != null) {
-                System.out.println(storage[i]);
+        for (Employee employee : storage) {
+            if (employee != null) {
+                System.out.println(employee);
             }
         }
     }
@@ -55,9 +55,9 @@ public class Main {
     }
 
     public static void printFullName(Employee[] fullName) {
-        for (int i = 0; i < fullName.length; i++) {
-            if (fullName[i] != null) {
-                System.out.println(fullName[i].getSecondName() + " " + fullName[i].getFirstName() + " " + fullName[i].getMiddleName());
+        for (Employee employee : fullName) {
+            if (employee != null) {
+                System.out.println(employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName());
             }
         }
     }
