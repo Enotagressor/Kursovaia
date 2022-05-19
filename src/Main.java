@@ -74,7 +74,6 @@ public class Main {
         Employee employee9 = new Employee("Ткачев", "Валерий", "Романович", 5, 46856.34);
 
 
-//        Employee[] storage = new Employee[10];
         addEmployee(employee1);
         addEmployee(employee2);
         addEmployee(employee3);
