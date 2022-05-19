@@ -17,7 +17,7 @@ public class Main {
             }
         }
     }
-    private static double printSumSalary(){
+    private static double SumSalary(){
         double sum = 0;
         for (Employee employee : storage) {
             if (employee != null) {
@@ -44,11 +44,11 @@ public class Main {
         }
         System.out.println(max);
     }
-    private static int printAverSalary (){
-    int counter = 1;
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] != null){
-                i = counter++;
+    private static int AverSalary (){
+    int counter = 0;
+        for (Employee employee : storage) {
+            if (employee != null) {
+                counter++;
             }
         }
         return counter;
@@ -85,10 +85,10 @@ public class Main {
         addEmployee(employee9);
 
         printEmployee();
-        System.out.println(printSumSalary());
+        System.out.println(SumSalary());
         printMinSalary();
         printMaxSalary();
-        System.out.println(printSumSalary()/printAverSalary ());
+        System.out.println(SumSalary()/AverSalary ());
         printFullName();
     }
 }
