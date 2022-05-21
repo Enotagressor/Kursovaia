@@ -62,6 +62,82 @@ public class Main {
             }
         }
     }
+    private static void printPromotionSalary(){
+        double index = 0.1;
+        for (Employee employee : storage) {
+            if (employee != null) {
+                double promotion = employee.getSalary();
+                employee.setSalary(promotion + promotion * index);
+                System.out.println(employee);
+            }
+        }
+    }
+    private static void printMinSalaryDepartment(int department){
+        double min = 1000000;
+        for (Employee employee : storage) {
+            if (employee != null && employee.getDepartment() == department && employee.getSalary() < min) {
+                min = employee.getSalary();
+            }
+        }
+        System.out.println(min);
+    }
+    private static void printMaxSalaryDepartment(int department){
+        double max = 0;
+        for (Employee employee : storage) {
+            if (employee != null && employee.getDepartment() == department && employee.getSalary() > max) {
+                max = employee.getSalary();
+            }
+        }
+        System.out.println(max);
+    }
+    private static double SumSalaryDepartment(int department) {
+        double sum = 0;
+        for (Employee employee : storage) {
+            if (employee != null && employee.getDepartment() == department) {
+                sum += employee.getSalary();
+            }
+        } return sum;
+    }
+    private static void printAverSalaryDepartment(int department){
+        int counter = 0;
+        for (Employee employee : storage) {
+            if (employee != null && employee.getDepartment() == department) {
+                counter++;
+            }
+        }
+        double aver = SumSalaryDepartment(department)/counter;
+        System.out.println(aver);
+    }
+    private static void promotionSalaryDepartment(int department, double index){
+        for (Employee employee : storage) {
+            if (employee != null && employee.getDepartment() == department) {
+                double promotion = employee.getSalary();
+                employee.setSalary(promotion + promotion * index);
+            }
+        }
+    }
+    private static void printEmployeeDepartment(int department){
+        for (Employee employee : storage) {
+            if (employee != null && employee.getDepartment() == department) {
+                System.out.println("ID" + employee.getId() + ": " + employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName()  + ", зарплата - " + employee.getSalary());
+            }
+        }
+    }
+
+    private static void printBeggar(double povertyThreshold) {
+        for (Employee employee : storage) {
+            if (employee != null && employee.getSalary() < povertyThreshold) {
+                System.out.println("ID" + employee.getId() + ": " + employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName()  + ", зарплата - " + employee.getSalary());
+            }
+        }
+    }
+    private static void printRich(double povertyThreshold) {
+        for (Employee employee : storage) {
+            if (employee != null && employee.getSalary() > povertyThreshold) {
+                System.out.println("ID" + employee.getId() + ": " + employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName()  + ", зарплата - " + employee.getSalary());
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Employee employee1 = new Employee("Фахрудинов", "Илья", "Романович", 1, 279576.67);
@@ -91,5 +167,20 @@ public class Main {
         printMaxSalary();
         printAverSalary();
         printFullName();
+        printPromotionSalary();
+        int department = 5;
+        printMinSalaryDepartment(department);
+        printMaxSalaryDepartment(department);
+        System.out.println(SumSalaryDepartment(department));
+        printAverSalaryDepartment(department);
+        double index = 0.2;
+        promotionSalaryDepartment(department, index);
+        printEmployeeDepartment(department);
+        System.out.println();
+        double povertyThreshold = 70000;
+        printBeggar(povertyThreshold);
+        System.out.println();
+        printRich(povertyThreshold);
+
     }
 }
