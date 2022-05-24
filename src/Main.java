@@ -62,8 +62,7 @@ public class Main {
             }
         }
     }
-    private static void printPromotionSalary(){
-        double index = 0.1;
+    private static void printPromotionSalary(double index){
         for (Employee employee : storage) {
             if (employee != null) {
                 double promotion = employee.getSalary();
@@ -72,14 +71,19 @@ public class Main {
             }
         }
     }
-    private static void printMinSalaryDepartment(int department){
+    private static void printMinSalaryDepartment(int department) {
         double min = 1000000;
         for (Employee employee : storage) {
             if (employee != null && employee.getDepartment() == department && employee.getSalary() < min) {
                 min = employee.getSalary();
             }
         }
-        System.out.println(min);
+        for (Employee employee : storage) {
+            if (employee != null && min == employee.getSalary()) {
+                System.out.println(employee);
+                break;
+            }
+        }
     }
     private static void printMaxSalaryDepartment(int department){
         double max = 0;
@@ -88,24 +92,32 @@ public class Main {
                 max = employee.getSalary();
             }
         }
-        System.out.println(max);
+        for (Employee employee : storage) {
+            if (employee != null && max == employee.getSalary()) {
+                System.out.println(employee);
+                break;
+            }
+        }
     }
-    private static double SumSalaryDepartment(int department) {
+    private static void printSumSalaryDepartment(int department) {
         double sum = 0;
         for (Employee employee : storage) {
             if (employee != null && employee.getDepartment() == department) {
                 sum += employee.getSalary();
             }
-        } return sum;
+        }
+        System.out.println(sum);
     }
     private static void printAverSalaryDepartment(int department){
         int counter = 0;
+        double sum = 0;
         for (Employee employee : storage) {
             if (employee != null && employee.getDepartment() == department) {
+                sum += employee.getSalary();
                 counter++;
             }
         }
-        double aver = SumSalaryDepartment(department)/counter;
+        double aver = sum /counter;
         System.out.println(aver);
     }
     private static void promotionSalaryDepartment(int department, double index){
@@ -167,11 +179,15 @@ public class Main {
         printMaxSalary();
         printAverSalary();
         printFullName();
-        printPromotionSalary();
+        double indexPromotion = 0.1;
+        printPromotionSalary(indexPromotion);
         int department = 5;
+        System.out.println(" ++++++++++++");
         printMinSalaryDepartment(department);
+        System.out.println(" ++++++++++++");
         printMaxSalaryDepartment(department);
-        System.out.println(SumSalaryDepartment(department));
+        System.out.println(" ++++++++++++");
+        printSumSalaryDepartment(department);
         printAverSalaryDepartment(department);
         double index = 0.2;
         promotionSalaryDepartment(department, index);
