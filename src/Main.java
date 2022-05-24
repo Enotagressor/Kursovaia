@@ -73,31 +73,33 @@ public class Main {
     }
     private static void printMinSalaryDepartment(int department) {
         double min = 1000000;
+        Employee empl = null;
         for (Employee employee : storage) {
             if (employee != null && employee.getDepartment() == department && employee.getSalary() < min) {
                 min = employee.getSalary();
+                empl = employee;
             }
         }
-        for (Employee employee : storage) {
-            if (employee != null && min == employee.getSalary()) {
-                System.out.println(employee);
-                break;
-            }
+        if (empl == null) {
+            System.out.println("no");
+        } else {
+            System.out.println(empl);
         }
     }
     private static void printMaxSalaryDepartment(int department){
         double max = 0;
+        Employee empl = null;
         for (Employee employee : storage) {
             if (employee != null && employee.getDepartment() == department && employee.getSalary() > max) {
                 max = employee.getSalary();
+                empl = employee;
             }
         }
-        for (Employee employee : storage) {
-            if (employee != null && max == employee.getSalary()) {
-                System.out.println(employee);
-                break;
+            if (empl == null) {
+                System.out.println("no");
+            } else {
+                System.out.println(empl);
             }
-        }
     }
     private static void printSumSalaryDepartment(int department) {
         double sum = 0;
