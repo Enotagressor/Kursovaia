@@ -1,157 +1,6 @@
 public class Main {
-    private static final Employee[] storage = new Employee[10];
+    public static EmployeeBook employeeBook = new EmployeeBook();
 
-    private static void addEmployee(Employee employee) {
-        for (int i = 0; i < storage.length; i++) {
-            if (storage[i] == null) {
-                storage[i] = employee;
-                break;
-            }
-        }
-    }
-
-    private static void printEmployee() {
-        for (Employee employee : storage) {
-            if (employee != null) {
-                System.out.println(employee);
-            }
-        }
-    }
-    private static double sumSalary(){
-        double sum = 0;
-        for (Employee employee : storage) {
-            if (employee != null) {
-                sum += employee.getSalary();
-            }
-        }
-        return sum;
-    }
-    private static void printMinSalary(){
-        double min = 1000000;
-        for (Employee employee : storage) {
-            if (employee != null && employee.getSalary() < min) {
-                min = employee.getSalary();
-            }
-        }
-        System.out.println(min);
-    }
-    private static void printMaxSalary(){
-        double max = 0;
-        for (Employee employee : storage) {
-            if (employee != null && employee.getSalary() > max) {
-                max = employee.getSalary();
-            }
-        }
-        System.out.println(max);
-    }
-    private static void printAverSalary (){
-    int counter = 0;
-        for (Employee employee : storage) {
-            if (employee != null) {
-                counter++;
-            }
-        }
-        double aver = sumSalary()/counter;
-        System.out.println(aver);
-    }
-
-    private static void printFullName() {
-        for (Employee employee : storage) {
-            if (employee != null) {
-                System.out.println(employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName());
-            }
-        }
-    }
-    private static void printPromotionSalary(double index){
-        for (Employee employee : storage) {
-            if (employee != null) {
-                double promotion = employee.getSalary();
-                employee.setSalary(promotion + promotion * index);
-                System.out.println(employee);
-            }
-        }
-    }
-    private static void printMinSalaryDepartment(int department) {
-        double min = 1000000;
-        Employee empl = null;
-        for (Employee employee : storage) {
-            if (employee != null && employee.getDepartment() == department && employee.getSalary() < min) {
-                min = employee.getSalary();
-                empl = employee;
-            }
-        }
-        if (empl == null) {
-            System.out.println("no");
-        } else {
-            System.out.println(empl);
-        }
-    }
-    private static void printMaxSalaryDepartment(int department){
-        double max = 0;
-        Employee empl = null;
-        for (Employee employee : storage) {
-            if (employee != null && employee.getDepartment() == department && employee.getSalary() > max) {
-                max = employee.getSalary();
-                empl = employee;
-            }
-        }
-            if (empl == null) {
-                System.out.println("no");
-            } else {
-                System.out.println(empl);
-            }
-    }
-    private static void printSumSalaryDepartment(int department) {
-        double sum = 0;
-        for (Employee employee : storage) {
-            if (employee != null && employee.getDepartment() == department) {
-                sum += employee.getSalary();
-            }
-        }
-        System.out.println(sum);
-    }
-    private static void printAverSalaryDepartment(int department){
-        int counter = 0;
-        double sum = 0;
-        for (Employee employee : storage) {
-            if (employee != null && employee.getDepartment() == department) {
-                sum += employee.getSalary();
-                counter++;
-            }
-        }
-        double aver = sum /counter;
-        System.out.println(aver);
-    }
-    private static void promotionSalaryDepartment(int department, double index){
-        for (Employee employee : storage) {
-            if (employee != null && employee.getDepartment() == department) {
-                double promotion = employee.getSalary();
-                employee.setSalary(promotion + promotion * index);
-            }
-        }
-    }
-    private static void printEmployeeDepartment(int department){
-        for (Employee employee : storage) {
-            if (employee != null && employee.getDepartment() == department) {
-                System.out.println("ID" + employee.getId() + ": " + employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName()  + ", зарплата - " + employee.getSalary());
-            }
-        }
-    }
-
-    private static void printBeggar(double povertyThreshold) {
-        for (Employee employee : storage) {
-            if (employee != null && employee.getSalary() < povertyThreshold) {
-                System.out.println("ID" + employee.getId() + ": " + employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName()  + ", зарплата - " + employee.getSalary());
-            }
-        }
-    }
-    private static void printRich(double povertyThreshold) {
-        for (Employee employee : storage) {
-            if (employee != null && employee.getSalary() > povertyThreshold) {
-                System.out.println("ID" + employee.getId() + ": " + employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName()  + ", зарплата - " + employee.getSalary());
-            }
-        }
-    }
 
     public static void main(String[] args) {
         Employee employee1 = new Employee("Фахрудинов", "Илья", "Романович", 1, 279576.67);
@@ -165,40 +14,51 @@ public class Main {
         Employee employee9 = new Employee("Ткачев", "Валерий", "Романович", 5, 46856.34);
 
 
-        addEmployee(employee1);
-        addEmployee(employee2);
-        addEmployee(employee3);
-        addEmployee(employee4);
-        addEmployee(employee5);
-        addEmployee(employee6);
-        addEmployee(employee7);
-        addEmployee(employee8);
-        addEmployee(employee9);
+        employeeBook.addEmployee(employee1);
+        employeeBook.addEmployee(employee2);
+        employeeBook.addEmployee(employee3);
+        employeeBook.addEmployee(employee4);
+        employeeBook.addEmployee(employee5);
+        employeeBook.addEmployee(employee6);
+        employeeBook.addEmployee(employee7);
+        employeeBook.addEmployee(employee8);
+        employeeBook.addEmployee(employee9);
 
-        printEmployee();
-        System.out.println(sumSalary());
-        printMinSalary();
-        printMaxSalary();
-        printAverSalary();
-        printFullName();
+        employeeBook.printEmployee();
+        System.out.println(employeeBook.sumSalary());
+        employeeBook.printMinSalary();
+        employeeBook.printMaxSalary();
+        employeeBook.printAverSalary();
+        employeeBook.printFullName();
         double indexPromotion = 0.1;
-        printPromotionSalary(indexPromotion);
+        employeeBook.printPromotionSalary(indexPromotion);
         int department = 5;
         System.out.println(" ++++++++++++");
-        printMinSalaryDepartment(department);
+        employeeBook.printMinSalaryDepartment(department);
         System.out.println(" ++++++++++++");
-        printMaxSalaryDepartment(department);
+        employeeBook.printMaxSalaryDepartment(department);
         System.out.println(" ++++++++++++");
-        printSumSalaryDepartment(department);
-        printAverSalaryDepartment(department);
+        employeeBook.printSumSalaryDepartment(department);
+        employeeBook.printAverSalaryDepartment(department);
         double index = 0.2;
-        promotionSalaryDepartment(department, index);
-        printEmployeeDepartment(department);
+        employeeBook.promotionSalaryDepartment(department, index);
+        employeeBook.printEmployeeDepartment(department);
         System.out.println();
         double povertyThreshold = 70000;
-        printBeggar(povertyThreshold);
+        employeeBook.printBeggar(povertyThreshold);
         System.out.println();
-        printRich(povertyThreshold);
+        employeeBook.printRich(povertyThreshold);
+        employeeBook.deleteEmployee("Домичковский", "Дмитрий", "Юрьевич");
+        System.out.println(" ++++++++++++");
+        Employee employee12 = new Employee("Ibragimov", "Aron", "Iosifovich", 3, 34567.71);
+        employeeBook.addEmployee(employee12);
+
+        employeeBook.changeSalaryEmployee("Ткачев", "Валерий", "Романович", 177777);
+        employeeBook.changeDepartmentEmployee("Ткачев", "Валерий", "Романович", 2);
+
+        employeeBook.printEmployee();
+        System.out.println(" ++++++++++++");
+        employeeBook.listDepartment();
 
     }
 }
