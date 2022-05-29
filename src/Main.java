@@ -1,5 +1,5 @@
 public class Main {
-    public static EmployeeBook employeeBook = new EmployeeBook();
+    private static final EmployeeBook employeeBook = new EmployeeBook();
 
 
     public static void main(String[] args) {
@@ -48,17 +48,16 @@ public class Main {
         employeeBook.printBeggar(povertyThreshold);
         System.out.println();
         employeeBook.printRich(povertyThreshold);
-        employeeBook.deleteEmployee("Домичковский", "Дмитрий", "Юрьевич");
+        employeeBook.deleteEmployee(employee8);
         System.out.println(" ++++++++++++");
         Employee employee12 = new Employee("Ibragimov", "Aron", "Iosifovich", 3, 34567.71);
         employeeBook.addEmployee(employee12);
 
-        employeeBook.changeSalaryEmployee("Ткачев", "Валерий", "Романович", 177777);
-        employeeBook.changeDepartmentEmployee("Ткачев", "Валерий", "Романович", 2);
+        employeeBook.changeSalaryEmployee(employee9, 177777);
+        employeeBook.changeDepartmentEmployee(employee9, 2);
 
         employeeBook.printEmployee();
         System.out.println(" ++++++++++++");
         employeeBook.listDepartment();
-
     }
 }

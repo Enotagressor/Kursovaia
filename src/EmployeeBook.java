@@ -1,9 +1,7 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.Objects;
 
 public class EmployeeBook {
     private final Employee[] storage;
-//    public static Employee newEmployee = new Employee();
 
     public EmployeeBook(){
         this.storage  = new Employee[10];
@@ -168,34 +166,36 @@ public class EmployeeBook {
             }
         }
     }
-    public void deleteEmployee(String secondName, String firstName, String middleName) {
+    public void deleteEmployee(Employee employee) {
         for (int i = 0; i < storage.length; i++) {
-            if (storage[i] != null && storage[i].getSecondName().equals(secondName) && storage[i].getFirstName().equals(firstName) && storage[i].getMiddleName().equals(middleName)){
+            if (storage[i] != null && Objects.equals(storage[i], employee)){
                 storage[i] = null;
             }
         }
     }
-    public void changeSalaryEmployee(String secondName, String firstName, String middleName, double salary) {
-        for (Employee employee : storage) {
-            if (employee != null && employee.getSecondName().equals(secondName) && employee.getFirstName().equals(firstName) && employee.getMiddleName().equals(middleName)) {
+    public void changeSalaryEmployee(Employee employee, double salary) {
+        for (Employee value : storage) {
+            if (value != null && Objects.equals(value, employee)) {
                 employee.setSalary(salary);
             }
         }
     }
-    public void changeDepartmentEmployee(String secondName, String firstName, String middleName, int department) {
-        for (Employee employee : storage) {
-            if (employee != null && employee.getSecondName().equals(secondName) && employee.getFirstName().equals(firstName) && employee.getMiddleName().equals(middleName)) {
+    public void changeDepartmentEmployee(Employee employee, int department) {
+        for (Employee value : storage) {
+            if (value != null && Objects.equals(value, employee)) {
                 employee.setDepartment(department);
             }
         }
     }
     public void listDepartment() {
-        for (int i = 0; i < storage.length; i++) {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Department  № " + i + ":");
             for (Employee employee : storage) {
                 if (employee != null && i == employee.getDepartment()) {
-                    System.out.println("Department №" + i + " " + employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName());
+                    System.out.println(employee.getSecondName() + " " + employee.getFirstName() + " " + employee.getMiddleName());
                 }
             }
         }
     }
+
 }
